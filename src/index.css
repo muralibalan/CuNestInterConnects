@@ -1,0 +1,27 @@
+
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #FFFFFF;
+    color: #4B5563;
+    font-family: "JetBrains Mono", monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+  }
+  p {
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+  }
+}
