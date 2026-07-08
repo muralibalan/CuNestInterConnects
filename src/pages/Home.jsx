@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import HeroSection from '../components/HeroSection';
@@ -35,7 +35,8 @@ const Home = () => {
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      className="bg-white w-full min-h-screen pt-20"
+      // மொபைலில் தேவையில்லாத padding-top (pt-20) நீக்கப்பட்டுள்ளது
+      className="bg-white w-full min-h-screen"
     >
       <HeroSection />
       <IntroSection />

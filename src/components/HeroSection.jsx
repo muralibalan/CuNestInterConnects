@@ -42,7 +42,8 @@ function HeroSection() {
       id="hero"
       sx={{
         position: 'relative',
-        minHeight: '100vh',
+        // Mobile-ல் content-க்கு ஏத்த உயரமாக மாற்றி, Desktop-ல் 100vh ஆக வைக்கப்பட்டுள்ளது
+        minHeight: { xs: 'calc(100vh - 80px)', md: '100vh' },
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -50,6 +51,8 @@ function HeroSection() {
         backgroundImage: 'linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url(/pcb_background.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        // Mobile-ல் ஸ்பேஸ் குறைக்க padding அட்ஜஸ்ட் செய்யப்பட்டுள்ளது
+        py: { xs: 6, sm: 8, md: 0 },
       }}
     >
       {/* Particle Background */}
@@ -129,10 +132,10 @@ function HeroSection() {
       </ParticlesProvider>
 
       {/* Main Content Container */}
-      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, textAlign: 'center', pt: { xs: 12, md: 0 } }}>
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
         
         {/* Dynamic Sliding Text Area */}
-        <Box sx={{ minHeight: { xs: '240px', md: '280px' }, display: 'flex', flexDirection: 'column', justifyContent: 'center', mb: 6 }}>
+        <Box sx={{ minHeight: { xs: '180px', sm: '220px', md: '280px' }, display: 'flex', flexDirection: 'column', justifyContent: 'center', mb: { xs: 4, md: 6 } }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -144,14 +147,14 @@ function HeroSection() {
               <Typography
                 variant="h1"
                 sx={{
-                  fontSize: { xs: '1.5rem', sm: '2.5rem', md: '4rem' },
+                  fontSize: { xs: '1.6rem', sm: '2.5rem', md: '4rem' },
                   fontWeight: 900,
                   textTransform: 'uppercase',
-                  letterSpacing: '3px',
+                  letterSpacing: { xs: '1.5px', md: '3px' },
                   color: '#FFFFFF',
                   fontFamily: '"JetBrains Mono", sans-serif',
-                  lineHeight: 1.1,
-                  mb: 3,
+                  lineHeight: { xs: 1.2, md: 1.1 },
+                  mb: { xs: 2, md: 3 },
                   textShadow: 'none',
                   maxWidth: '900px',
                   mx: 'auto'
@@ -163,12 +166,13 @@ function HeroSection() {
               <Typography
                 variant="body1"
                 sx={{
-                  fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.4rem' },
-                  color: '#FFFFFF',
+                  fontSize: { xs: '0.85rem', sm: '1.1rem', md: '1.4rem' },
+                  color: 'rgba(255, 255, 255, 0.9)',
                   fontFamily: '"JetBrains Mono", sans-serif',
                   maxWidth: '700px',
                   mx: 'auto',
-                  lineHeight: 1.6
+                  lineHeight: 1.5,
+                  px: { xs: 1, sm: 0 }
                 }}
               >
                 {slides[currentSlide].subtext}
@@ -177,24 +181,26 @@ function HeroSection() {
           </AnimatePresence>
         </Box>
 
-        {/* Fixed CTA Buttons (Do not slide) */}
+        {/* Fixed CTA Buttons */}
         <Box 
           sx={{ 
             display: 'flex', 
             flexDirection: { xs: 'column', sm: 'row' }, 
             justifyContent: 'center', 
             alignItems: 'center',
-            gap: { xs: 2, sm: 3 } 
+            gap: { xs: 2, sm: 3 },
+            width: { xs: '100%', sm: 'auto' },
+            px: { xs: 2, sm: 0 }
           }}
         >
           <Link to="/#expertise" className="w-full sm:w-auto">
-            <button className="w-full px-10 py-4 rounded-full bg-transparent border-2 border-[#CD7F32] text-white font-bold uppercase tracking-widest hover:bg-[#CD7F32] transition-all duration-300 hover:scale-105">
+            <button className="w-full px-8 py-3.5 rounded-full bg-transparent border-2 border-[#CD7F32] text-white font-bold uppercase tracking-widest hover:bg-[#CD7F32] transition-all duration-300 hover:scale-105 text-sm sm:text-base">
               Explore Services
             </button>
           </Link>
           
           <Link to="/contact" className="w-full sm:w-auto">
-            <button className="w-full px-10 py-4 rounded-full bg-transparent border-2 border-white text-white font-bold uppercase tracking-widest hover:bg-white hover:text-[#07090C] transition-all duration-300 hover:scale-105">
+            <button className="w-full px-8 py-3.5 rounded-full bg-transparent border-2 border-white text-white font-bold uppercase tracking-widest hover:bg-white hover:text-[#07090C] transition-all duration-300 hover:scale-105 text-sm sm:text-base">
               Contact Us
             </button>
           </Link>
